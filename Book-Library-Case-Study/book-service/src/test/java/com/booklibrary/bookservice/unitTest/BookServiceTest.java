@@ -1,4 +1,4 @@
-package com.booklibrary.bookservice;
+package com.booklibrary.bookservice.unitTest;
 import com.booklibrary.bookservice.model.Book;
 import com.booklibrary.bookservice.repository.BookRepository;
 import com.booklibrary.bookservice.service.BookService;
@@ -20,36 +20,36 @@ import static org.mockito.Mockito.when;
 public class BookServiceTest {
 
     @InjectMocks
-    private BookService bookService;
+    private BookService mockBookServiceTest;
 
     @Mock
-    private BookRepository bookRepository;
+    private BookRepository mockBookRepository;
 
     @Mock
-    private Book book;
+    private Book mockBook;
 
     @BeforeEach
     void setUp(){
-        book.setBookId("B1212");
-        book.setId(1L);
+        mockBook.setBookId("B1212");
+        mockBook.setId(1L);
     }
 
     @Test
     void getAllBooksTest(){
         List<Book> bookList = new ArrayList<>();
-        bookList.add(book);
-        when(bookRepository.findAll()).thenReturn(bookList);
+        bookList.add(mockBook);
+        when(mockBookRepository.findAll()).thenReturn(bookList);
         
-        List<Book> response = bookService.getAllBooks();
+        List<Book> response = mockBookServiceTest.getAllBooks();
         assertEquals(1,response.size());
     }
 
     @Test
     void addBookTest(){
-        when(book.getId()).thenReturn(1L);
-        when(bookRepository.findById(1L)).thenReturn(Optional.of(book));
+        when(mockBook.getId()).thenReturn(1L);
+        when(mockBookRepository.findById(1L)).thenReturn(Optional.of(mockBook));
 
-        Book response = bookService.addBook(book);
+        Book response = mockBookServiceTest.addBook(mockBook);
         assertEquals(1L,response.getId());
     }
     

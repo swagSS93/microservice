@@ -1,4 +1,4 @@
-package com.booklibrary.bookservice;
+package com.booklibrary.bookservice.unitTest;
 
 import com.booklibrary.bookservice.controller.BookServiceController;
 import com.booklibrary.bookservice.model.Book;
@@ -20,23 +20,23 @@ import static org.mockito.Mockito.when;
 public class BookServiceControllerTest {
 
     @InjectMocks
-    private BookServiceController bookServiceController;
+    private BookServiceController mockBookServiceControllerTest;
 
     @Mock
-    private BookService bookService;
+    private BookService mockBookService;
 
     @Test
      void getAllBooksTest(){
-       when(bookService.getAllBooks()).thenReturn(new ArrayList<>());
-       ResponseEntity<List<Book>> response = bookServiceController.getAllBooks();
+       when(mockBookService.getAllBooks()).thenReturn(new ArrayList<>());
+       ResponseEntity<List<Book>> response = mockBookServiceControllerTest.getAllBooks();
        assertEquals(200,response.getStatusCodeValue());
    }
 
     @Test
     void addBookTest(){
         Book book = new Book();
-        when(bookService.addBook(book)).thenReturn(book);
-        ResponseEntity<Book> response = bookServiceController.addBook(book);
+        when(mockBookService.addBook(book)).thenReturn(book);
+        ResponseEntity<Book> response = mockBookServiceControllerTest.addBook(book);
         assertEquals(201,response.getStatusCodeValue());
     }
 }
