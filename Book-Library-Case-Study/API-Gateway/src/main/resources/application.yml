@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: BOOK-SERVICE
+          uri: lb://BOOK-SERVICE
+          predicates:
+          - Path= /books
+
+        - id: BOOK-SUBSCRIPTION-SERVICE
+          uri: lb://BOOK-SUBSCRIPTION-SERVICE
+          predicates:
+          - Path= /subscriptions/**
+

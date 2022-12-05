@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url : jdbc:mysql://localhost:3306/book-library
+    username : root
+    password : root
+
+  application:
+    name: BOOK-SERVICE
